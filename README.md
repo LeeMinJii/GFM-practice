@@ -1,5 +1,7 @@
-# GFM-practice
-테이블 (확장)
+## GFM-how to use
+- GFM의 표준 Markdown에 대한 확장 부분의 사용법
+
+Table (extension)
 GFM은 table 추가 리프 블록 유형을 사용할 확장을 .
 
 테이블 단일 헤더 행 구성된 행과 열 데이터의 배열이다하는 구분자 행 데이터 및 제로 이상의 데이터 열로부터 헤더를 분리.
