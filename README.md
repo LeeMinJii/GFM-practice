@@ -1,17 +1,23 @@
-## GFM-how to use
-- GFM의 표준 Markdown에 대한 확장 부분의 사용법에 대하여.
+# GFM-how to use
+> GFM의 표준 Markdown에 대한 확장 부분의 사용법에 대하여.
 
-<Tables (extension)>
->테이블이란?  
->ㄴ
-GFM은 table 추가 리프 블록 유형을 사용할 확장을 .
+## **<Tables (extension)>**
+### 테이블이란?  
+- 테이블은 행과 열이 있는 데이터 배열이다.  
 
-테이블 단일 헤더 행 구성된 행과 열 데이터의 배열이다하는 구분자 행 데이터 및 제로 이상의 데이터 열로부터 헤더를 분리.
+### 구성  
+- 단일 헤더 행  
+- 데이터로부터 헤더를 구분하는 구분자 행  
+- 0개 이상의 데이터 행
 
-각 행은 인라인 이 구문 분석되고 파이프 ( |)로 구분 된 임의의 텍스트를 포함하는 셀로 구성됩니다 . 읽기의 명확성을 위해 선행 및 후행 파이프도 권장되며 그렇지 않으면 파싱 모호성이 있다. 파이프와 셀 내용 사이의 공간이 잘린다. 블록 수준 요소는 테이블에 삽입 할 수 없다.
+### 사용법 
+- 각 행은 임의 텍스트를 포함하는 셀로 구성되며, 이 셀에서는 인선이 구문 분석되고 **파이프**(|)로 구분된다.  
+> 판독의 명확성을 위해 선행 파이프와 후행 파이프가 권장된다.  
+- 테이블에 블록 수준 요소를 삽입할 수 없다.  
+- **구분자 행**(delimiter row)은 오직 하이픈(-), 선행 콜론 또는 후행 콜론, 또는 둘 다에 해당하는 셀로 구성되어 각각 왼쪽, 오른쪽 또는 가운데 정렬을 나타낸다.  
 
-분리 행은 그 내용 만 하이픈 (있는 세포로 구성 -), 및 선택적으로, 선행 또는 후행 콜론 ( :), 또는 양쪽 각각 오른쪽, 또는 중심 정렬을 나타내도록 왼쪽.
-EX 1)  
+## EX 1)  
+```
 | foo | bar |
 | --- | --- |
 | baz | bim |
@@ -29,10 +35,32 @@ EX 1)
 <td>bim</td>
 </tr>
 </tbody>
-</table>
-한 열의 셀은 길이가 일치 할 필요가 없지만 일치하는 경우 읽기가 더 쉽다. 마찬가지로 선행 및 후행 파이프를 사용하면 일관성이 없을 수 있다.
+</table>  
+```
+출력 결과  
+| foo | bar |
+| --- | --- |
+| baz | bim |
+ 
+<table>
+<thead>
+<tr>
+<th>foo</th>
+<th>bar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>baz</td>
+<td>bim</td>
+</tr>
+</tbody>
+</table> 
 
-EX 2)
+> 한 열의 셀은 길이가 일치 할 필요가 없지만 일치하는 경우 읽기가 더 쉽다. 마찬가지로 선행 및 후행 파이프를 사용도 일관되지 않을 수 있다.  
+
+## EX 2)
+```
 | abc | defghi |
 :-: | -----------:
 bar | baz
@@ -51,9 +79,31 @@ bar | baz
 </tr>
 </tbody>
 </table>
-다른 인라인 범위 내부를 포함하여 이스케이프 처리하여 셀의 콘텐츠에 파이프를 포함한다.
+```
+출력 결과  
+| abc | defghi |
+:-: | -----------:
+bar | baz
+ 
+<table>
+<thead>
+<tr>
+<th align="center">abc</th>
+<th align="right">defghi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">bar</td>
+<td align="right">baz</td>
+</tr>
+</tbody>
+</table>  
 
-EX 3)  
+>다른 인라인 범위 내부를 포함하여 이스케이프 처리하여 셀의 콘텐츠에 파이프를 포함한다.
+
+## EX 3)  
+```
 | f\|oo  |
 | ------ |
 | b `\|` az |
@@ -74,9 +124,33 @@ EX 3)
 </tr>
 </tbody>
 </table>
-테이블은 첫 번째 빈 줄 또는 다른 블록 수준 구조의 시작에서 나다.
+```
+출력 결과  
+| f\|oo  |
+| ------ |
+| b `\|` az |
+| b **\|** im |
+ 
+<table>
+<thead>
+<tr>
+<th>f|oo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>b <code>|</code> az</td>
+</tr>
+<tr>
+<td>b <strong>|</strong> im</td>
+</tr>
+</tbody>
+</table>  
 
-EX 4)  
+>테이블은 첫 번째 빈 줄 또는 다른 블록 수준 구조의 시작에서 나다.
+
+## EX 4) 
+```
 | abc | def |
 | --- | --- |
 | bar | baz |
@@ -99,9 +173,33 @@ EX 4)
 <blockquote>
 <p>bar</p>
 </blockquote>
+```
+출력 결과  
+| abc | def |
+| --- | --- |
+| bar | baz |
+> bar
+ 
+<table>
+<thead>
+<tr>
+<th>abc</th>
+<th>def</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bar</td>
+<td>baz</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>bar</p>
+</blockquote>  
 
-
-EX 5)  
+## EX 5)  
+```
 | abc | def |
 | --- | --- |
 | bar | baz |
@@ -128,9 +226,39 @@ bar
 </tbody>
 </table>
 <p>bar</p>
-헤더 행 은 셀 수의 구분 기호 행 과 일치해야한다 . 그렇지 않으면 테이블이 인식되지 않1다.
+```
+출력 결과  
+| abc | def |
+| --- | --- |
+| bar | baz |
+bar
 
-EX 6)  
+bar
+ 
+<table>
+<thead>
+<tr>
+<th>abc</th>
+<th>def</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bar</td>
+<td>baz</td>
+</tr>
+<tr>
+<td>bar</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>bar</p>  
+
+>헤더 행 은 셀 수의 구분 기호 행 과 일치해야한다 . 그렇지 않으면 테이블이 인식되지 않1다.
+
+## EX 6)  
+```
 | abc | def |
 | --- |
 | bar |
@@ -138,9 +266,20 @@ EX 6)
 <p>| abc | def |
 | --- |
 | bar |</p>
-테이블 행의 나머지 부분은 셀 수에 따라 다를 수 있다. 헤더 행의 셀 수보다 적은 수의 셀이있는 경우 빈 셀이 삽입된다. 더 큰 경우 초과는 무시된다.
+```
+출력 결과  
+| abc | def |
+| --- |
+| bar |
+ 
+<p>| abc | def |
+| --- |
+| bar |</p>  
 
-EX 7)  
+>테이블 행의 나머지 부분은 셀 수에 따라 다를 수 있다. 헤더 행의 셀 수보다 적은 수의 셀이있는 경우 빈 셀이 삽입된다. 더 큰 경우 초과는 무시된다.
+
+## EX 7)  
+```
 | abc | def |
 | --- | --- |
 | bar |
@@ -164,9 +303,36 @@ EX 7)
 </tr>
 </tbody>
 </table>
-본문에 행이 없으면 <tbody> HTML 출력에 가 생성다.
+```
+출력 결과  
+| abc | def |
+| --- | --- |
+| bar |
+| bar | baz | boo |
+ 
+<table>
+<thead>
+<tr>
+<th>abc</th>
+<th>def</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bar</td>
+<td></td>
+</tr>
+<tr>
+<td>bar</td>
+<td>baz</td>
+</tr>
+</tbody>
+</table>  
 
-EX 8)
+>본문에 행이 없으면 <tbody> HTML 출력에 가 생성다.
+
+## EX 8)
+```
 | abc | def |
 | --- | --- |
  
@@ -178,4 +344,16 @@ EX 8)
 </tr>
 </thead>
 </table>
-`git status`
+```  
+출력 결과  
+| abc | def |
+| --- | --- |
+ 
+<table>
+<thead>
+<tr>
+<th>abc</th>
+<th>def</th>
+</tr>
+</thead>
+</table>
