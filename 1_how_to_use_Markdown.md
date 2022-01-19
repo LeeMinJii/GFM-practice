@@ -942,4 +942,4 @@ This **word** is bold. This <em>word</em> is italic.
 
 ---
 
-GFM의 표준 Markdown에 대한 확장 부분의 사용법 [GitHub repository URL](https://github.com/LeeMinJii/GFM-practice.git)
+GFM의 표준 Markdown에 대한 확장 부분의 사용법 [GitHub repository URL](https://github.com/LeeMinJii/how_to_use_Markdown/blob/fe2690b954ea89a5b12c7588cbeef2ac7de43d2e/2_how_to_use_Markdown.md)
